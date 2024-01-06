@@ -44,6 +44,8 @@
                   <th> Nama</th>
                   <th> No HP</th>
                   <th> Alamat</th>
+                  <th> Jumlah</th>
+                  {{-- <th> Jumlah</th> --}}
                   <th> Action </th>
                 </tr>
               </thead>
@@ -55,6 +57,10 @@
                   <td> {{$item->nama}} </td>
                   <td> {{$item->no_hp}} </td>
                   <td> {{$item->alamat}} </td>
+                  {{-- @foreach ($jumlahAcara as $count) --}}
+                  <td> {!! implode($total) !!} </td>
+                  {{-- @endforeach --}}
+                  {{-- <td>tt</td> --}}
                   <td>
                     <form action="{{ route('ustadz.destroy', $item->ustadz_id) }}" method="POST">
                         <a href="{{ route('ustadz.edit', $item->ustadz_id) }}" class="btn btn-success btn-sm" style="

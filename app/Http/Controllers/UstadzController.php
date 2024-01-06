@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ustadz;
+use App\Models\Acara;
+use DB;
 
 class UstadzController extends Controller
 {
@@ -14,18 +16,23 @@ class UstadzController extends Controller
     {
         $ustadz = Ustadz::latest()->get();
 
+        
         $jumlahAcara = Acara::select('pemateri', DB::raw('count(*) as total_materi'))
-        ->where('materi')
+        ->where('kehadiran', 'hadir')
         ->groupBy('pemateri')
         ->get();
 
         foreach ($jumlahAcara as $item){
             $nama[] = $item->pemateri;
-            $total[] = $item->total_kehadiran;
+            $total[] = $item->total_materi;
         }
+
+
+        // dd($nama);
         
-        return view('admin.ustadz.index', compact('ustadz'));
+        return view('admin.ustadz.index', compact('ustadz', 'jumlahAcara', 'total'));
     }
+
 
     /**
      * Show the form for creating a new resource.

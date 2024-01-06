@@ -25,6 +25,7 @@ class Acara extends Model
         'jam_acara',
         'tempat',
         'pemateri',
+        'kehadiran',
     ];
 
 

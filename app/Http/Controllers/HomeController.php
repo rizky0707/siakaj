@@ -32,6 +32,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // menampilkan data bulanan 
+
         $tahun = date('Y');
         $bulan = date('m');
         for ($i = 1; $i <= $bulan; $i++) {
@@ -40,6 +42,7 @@ class HomeController extends Controller
             $dataTotalAbsen[] = $totalAbsen;
         }
     
+        // menghitung jumlah perserta yang hadir
 
         $jumlahKehadiranPeserta = Absensi::select('peserta_id', DB::raw('count(*) as total_kehadiran'))
         ->where('kehadiran', 'hadir')
@@ -56,6 +59,7 @@ class HomeController extends Controller
     //    {
     //     echo "HU";
     //    }
+    // dd($jumlahKehadiranPeserta);
 
         $data['nama'] = $nama;
         $data['total'] = $total;
