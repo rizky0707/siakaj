@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
+@section('style')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css" type="text/css">
+@endsection
+
 @section('content')
+
 <link href="{{asset('assets/admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
  <!-- Page Heading -->
@@ -156,7 +161,55 @@
             </div>
         </div>
     </div>
+
+    <div class="col-xl-6 col-lg-7">
+      <div class="card shadow mb-4">
+          <!-- Card Header - Dropdown -->
+          <div
+              class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h6 class="m-0 font-weight-bold text-primary">Jumlah Pemateri Pengisi</h6>
+              <div class="dropdown no-arrow">
+                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                      aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+              </div>
+          </div>
+          <!-- Card Body -->
+          <div class="card-body">
+            <table id="example" class="table table-bordered table-responsive" width="100%">
+              <thead>
+                <tr>
+                  <th> # </th>
+                  <th> Nama</th>
+                  <th> Jumlah</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php $no= 1; ?>
+                @foreach ($jumlahAcara as $item)   
+                <tr>
+                  <td> {{$no++}} </td>
+                  <td> {{$item->ustadz->nama }}</td>
+                  <td> {{$item->total_materi}} </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+      </div>
+  </div>
+
 </div>
+
 
 <!-- Content Row -->
 <div class="row">
@@ -343,4 +396,13 @@ var myPieChart = new Chart(ctx, {
 
 </script>
 @endsection
-
+@section('script')
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+    } );
+  </script> 
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+@endsection

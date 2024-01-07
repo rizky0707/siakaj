@@ -54,16 +54,26 @@ class HomeController extends Controller
             $nama[] = $item->peserta_id;
             $total[] = $item->total_kehadiran;
         }
-        
-    //    if($total == 3)
-    //    {
-    //     echo "HU";
-    //    }
+
+         // menghitung jumlah pemateri yang hadir
+        $jumlahAcara = Acara::select('pemateri', DB::raw('count(*) as total_materi'))
+        ->where('kehadiran', 'hadir')
+        ->groupBy('pemateri')
+        ->get();
+
+        foreach ($jumlahAcara as $item){
+            $namaAcara[] = $item->pemateri;
+            $totalAcara[] = $item->total_materi;
+        }
+
     // dd($jumlahKehadiranPeserta);
 
         $data['nama'] = $nama;
+        $data['namaAcara'] = $namaAcara;
         $data['total'] = $total;
+        $data['totalAcara'] = $totalAcara;
         $data['jumlahKehadiranPeserta'] = $jumlahKehadiranPeserta;
+        $data['jumlahAcara'] = $jumlahAcara;
         $data['dataBulan'] = $dataBulan;
         $data['dataTotalAbsen'] = $dataTotalAbsen;
         $data['count_peserta'] = Peserta::all()->count();

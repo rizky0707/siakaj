@@ -16,19 +16,8 @@ class UstadzController extends Controller
     {
         $ustadz = Ustadz::latest()->get();
 
-        
-        $jumlahAcara = Acara::select('pemateri', DB::raw('count(*) as total_materi'))
-        ->where('kehadiran', 'hadir')
-        ->groupBy('pemateri')
-        ->get();
 
-        foreach ($jumlahAcara as $item){
-            $nama[] = $item->pemateri;
-            $total[] = $item->total_materi;
-        }
-
-
-        // dd($nama);
+        // dd($item->total_materi);
         
         return view('admin.ustadz.index', compact('ustadz', 'jumlahAcara', 'total'));
     }

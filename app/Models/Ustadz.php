@@ -14,8 +14,12 @@ class Ustadz extends Model
     protected $primaryKey = 'ustadz_id';
 
     public function acara() {
-        return $this->hasMany(Acara::class);
+        return $this->hasMany(Acara::class, 'id', 'pemateri');
     }
+
+    // public function acaras() {
+    //     return $this->belongsTo(Acara::class);
+    // }
 
     protected $fillable = [
         'nama',
