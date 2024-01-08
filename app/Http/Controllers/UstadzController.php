@@ -19,7 +19,7 @@ class UstadzController extends Controller
 
         // dd($item->total_materi);
         
-        return view('admin.ustadz.index', compact('ustadz', 'jumlahAcara', 'total'));
+        return view('admin.ustadz.index', compact('ustadz'));
     }
 
 
