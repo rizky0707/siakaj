@@ -29,6 +29,8 @@
     </div>
     @endif
 
+    {{-- alert excel dan export --}}
+
     @if ($message = Session::get('success-import'))
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
       <strong>Berhasil !</strong> {{ $message }}.
@@ -87,11 +89,10 @@
                     
                       <label for="">Pilih File</label>
                       <div class="col-md-4">
-                      <input type="file" class="form-control" name="file" required>
+                      <input type="file" class="form-control form-control-sm fs-6" name="file" required>
                       </div>
                       <div class="col-md-2">
-                        <button class="btn btn-success" type="submit">Import</button>
-                        <a href="{{route('absensi.export')}}" class="btn btn-primary">Export</a>
+                        <button class="btn btn-success btn-sm" type="submit">Import</button>
                       </div>
                   </div>
                 </form>

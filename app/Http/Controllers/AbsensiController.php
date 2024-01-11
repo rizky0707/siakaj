@@ -68,7 +68,10 @@ class AbsensiController extends Controller
     {
         $absensi = Absensi::all();
         $peserta = Peserta::all();
-        $acara = Acara::latest()->limit(1)->get();
+        $acara = Acara::whereDay('tgl_acara', now()->day)->latest()->limit(1)->get();
+        // $acara = Acara::latest()->limit(1)->get();
+        
+
         return view('admin.absensi.create', compact('absensi', 'peserta', 'acara'));
 
     }

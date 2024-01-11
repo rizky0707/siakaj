@@ -47,9 +47,10 @@
                       <div class="col-md-2">
                         <input type="date" class="form-control" name="end_date">
                       </div>
-                      <div class="col-md-2">
+                      <div class="col-md-4">
                         <button class="btn btn-primary btn-sm" type="submit">Cari</button>
                         <a href="{{route('indexLaporan')}}" class="btn btn-danger btn-sm">Reset</a>
+                        <a href="{{route('absensi.export')}}" class="btn btn-primary btn-sm">Export EXCEL</a>
                     </div>
                     </div>
                   </form>

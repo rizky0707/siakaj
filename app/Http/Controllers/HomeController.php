@@ -69,9 +69,9 @@ class HomeController extends Controller
     // dd($jumlahKehadiranPeserta);
 
         $data['nama'] = $nama;
-        $data['namaAcara'] = $namaAcara;
+        // $data['namaAcara'] = $namaAcara;
         $data['total'] = $total;
-        $data['totalAcara'] = $totalAcara;
+        // $data['totalAcara'] = $totalAcara;
         $data['jumlahKehadiranPeserta'] = $jumlahKehadiranPeserta;
         $data['jumlahAcara'] = $jumlahAcara;
         $data['dataBulan'] = $dataBulan;
